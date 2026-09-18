@@ -35,3 +35,14 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+document.querySelectorAll('[data-whatsapp]').forEach(link => {
+  link.addEventListener('click', () => {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', 'generate_lead', {
+      event_category: 'contact',
+      event_label: link.dataset.whatsapp
+    });
+  });
+});
