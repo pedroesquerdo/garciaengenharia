@@ -18,6 +18,12 @@ Site institucional estático da Garcia Engenharia & Construção, publicado no G
 - `politica-de-privacidade.html`: informações de privacidade
 - `robots.txt` e `sitemap.xml`: arquivos de indexação
 - `assets/`: identidade visual e imagens oficiais
+- `en/` e `es/`: versões estáticas em inglês e espanhol
+- `build-locales.js`: gerador sem dependências das páginas localizadas
+
+## Conteúdo multilíngue
+
+A versão em português é a fonte principal. Depois de alterar textos ou estrutura em `index.html`, execute `node build-locales.js` e revise as páginas geradas em `en/index.html` e `es/index.html` antes de publicar.
 
 ## Validação antes de publicar
 

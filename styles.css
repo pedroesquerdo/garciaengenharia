@@ -51,6 +51,9 @@ button { font: inherit; }
 .nav a { transition: color .2s ease; }
 .nav a:hover { color: var(--blue); }
 .nav-cta { padding: 11px 18px; color: var(--white) !important; background: var(--blue); border-radius: 999px; }
+.language-switcher { display: inline-flex; align-items: center; gap: 3px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; }
+.language-switcher a { min-width: 30px; padding: 5px 6px; border-radius: 999px; text-align: center; font-size: 11px; }
+.language-switcher a[aria-current="page"] { color: #fff; background: var(--blue); }
 .menu-toggle { display: none; border: 0; background: transparent; padding: 8px; cursor: pointer; }
 .menu-toggle span { display: block; width: 24px; height: 2px; margin: 5px 0; background: var(--ink); }
 
@@ -265,6 +268,8 @@ footer { padding: 60px 0 28px; color: #b9c8d3; background: #081a27; }
 .footer-links a:hover { color: white; }
 .footer-bottom { margin-top: 45px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.10); display: flex; justify-content: space-between; gap: 25px; color: #6f8594; font-size: 12px; }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-languages { display: inline-flex; gap: 10px; }
+.footer-languages a[aria-current="page"] { color: #fff; font-weight: 700; }
 .cookie-banner { position: fixed; left: 20px; right: 20px; bottom: 20px; z-index: 90; max-width: 860px; margin: auto; padding: 18px; border: 1px solid var(--line); border-radius: 16px; color: var(--ink); background: #fff; box-shadow: var(--shadow); }
 .cookie-banner p { margin: 0 0 14px; font-size: 13px; }
 .cookie-banner p a { color: var(--blue); text-decoration: underline; }
@@ -306,6 +311,8 @@ footer { padding: 60px 0 28px; color: #b9c8d3; background: #081a27; }
   .nav { position: fixed; inset: 76px 14px auto; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 14px; border-radius: 18px; background: white; box-shadow: var(--shadow); }
   .nav.open { display: flex; }
   .nav a, .nav a:not(.nav-cta) { display: block; padding: 12px 13px; }
+  .nav .language-switcher { display: flex; justify-content: center; margin: 6px 0; }
+  .nav .language-switcher a { display: inline-block; padding: 7px 12px; }
   .nav-cta { text-align: center; margin-top: 6px; }
   .menu-toggle { display: block; }
   .hero { min-height: 720px; min-height: 100svh; padding: 118px 0 78px; }
