@@ -2,6 +2,7 @@ const header = document.querySelector('.site-header');
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 const year = document.querySelector('#year');
+const hero = document.querySelector('.hero');
 
 const updateHeader = () => {
   header.classList.toggle('scrolled', window.scrollY > 18);
@@ -9,6 +10,40 @@ const updateHeader = () => {
 
 updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
+
+if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let pointerActive = false;
+  let framePending = false;
+
+  const setReveal = value => hero.style.setProperty('--hero-reveal', `${Math.max(55, Math.min(100, value))}%`);
+  const updateRevealFromScroll = () => {
+    framePending = false;
+    if (pointerActive) return;
+    const distance = Math.max(1, hero.offsetHeight * .58);
+    setReveal(55 + Math.min(1, Math.max(0, window.scrollY / distance)) * 45);
+  };
+  const requestRevealUpdate = () => {
+    if (framePending) return;
+    framePending = true;
+    requestAnimationFrame(updateRevealFromScroll);
+  };
+
+  hero.addEventListener('pointermove', event => {
+    if (event.pointerType === 'touch') return;
+    pointerActive = true;
+    const bounds = hero.getBoundingClientRect();
+    setReveal(((event.clientX - bounds.left) / bounds.width) * 100);
+  }, { passive: true });
+
+  hero.addEventListener('pointerleave', () => {
+    pointerActive = false;
+    requestRevealUpdate();
+  });
+
+  window.addEventListener('scroll', requestRevealUpdate, { passive: true });
+  window.addEventListener('resize', requestRevealUpdate, { passive: true });
+  updateRevealFromScroll();
+}
 
 if (year) year.textContent = new Date().getFullYear();
 

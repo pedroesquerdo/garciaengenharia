@@ -7,6 +7,7 @@ const translations = {
   en: {
     lang: 'en', ogLocale: 'en_US', canonical: 'https://garciaconstrutora.com.br/en/', privacy: 'privacy-policy.html', whatsapp: 'Hello, Lucas! I would like to discuss a project.',
     strings: [
+      ['Do projeto à obra pronta, <span>com clareza em cada etapa.</span>', 'From design to completion, <span>with clarity at every stage.</span>'], ['Projeto <b>→</b> obra pronta', 'Design <b>→</b> completed project'],
       ['Falar com a Garcia Engenharia pelo WhatsApp', 'Chat with Garcia Engineering on WhatsApp'], ['Engenheiro-chefe', 'Lead engineer'],
       ['Engenharia, arquitetura, execução de obras, acessibilidade e regularização em São José do Rio Preto. Fale com a Garcia Engenharia & Construção.', 'Engineering, architecture, construction, accessibility and property regularization in São José do Rio Preto. Contact Garcia Engineering & Construction.'],
       ['Engenharia e Construção em São José do Rio Preto | Garcia', 'Engineering and Construction in São José do Rio Preto | Garcia'],
@@ -50,6 +51,7 @@ const translations = {
   es: {
     lang: 'es', ogLocale: 'es_ES', canonical: 'https://garciaconstrutora.com.br/es/', privacy: 'politica-de-privacidad.html', whatsapp: '¡Hola, Lucas! Me gustaría conversar sobre un proyecto.',
     strings: [
+      ['Do projeto à obra pronta, <span>com clareza em cada etapa.</span>', 'Del proyecto a la obra terminada, <span>con claridad en cada etapa.</span>'], ['Projeto <b>→</b> obra pronta', 'Proyecto <b>→</b> obra terminada'],
       ['Falar com a Garcia Engenharia pelo WhatsApp', 'Hablar con Garcia Ingeniería por WhatsApp'], ['Engenheiro-chefe', 'Ingeniero jefe'],
       ['Serviços de engenharia e construção', 'Servicios de ingeniería y construcción'], ['Engenharia e execução de obras', 'Ingeniería y ejecución de obras'], ['Projetos de acessibilidade', 'Proyectos de accesibilidad'], ['Regularização de imóveis', 'Regularización de inmuebles'],
       ['Engenharia, arquitetura, execução de obras, acessibilidade e regularização em São José do Rio Preto. Fale com a Garcia Engenharia & Construção.', 'Ingeniería, arquitectura, ejecución de obras, accesibilidad y regularización en São José do Rio Preto. Contacte con Garcia Ingeniería y Construcción.'],
