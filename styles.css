@@ -59,7 +59,7 @@ button { font: inherit; }
 .menu-toggle span { display: block; width: 24px; height: 2px; margin: 5px 0; background: var(--white); }
 
 .hero {
-  --hero-reveal: 55%;
+  --hero-reveal: 58%;
   position: relative;
   min-height: 760px;
   min-height: 100svh;
@@ -78,14 +78,10 @@ button { font: inherit; }
 }
 .hero-bg-complete {
   background-image: url("assets/hero-garcia-engenharia-complete.webp");
-  clip-path: polygon(0 0, var(--hero-reveal) 0, var(--hero-reveal) 100%, 0 100%);
-  will-change: clip-path;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 calc(var(--hero-reveal) - 8%), transparent calc(var(--hero-reveal) + 8%));
+  mask-image: linear-gradient(90deg, #000 0%, #000 calc(var(--hero-reveal) - 8%), transparent calc(var(--hero-reveal) + 8%));
+  will-change: mask-image;
 }
-.hero-reveal-line { position: absolute; top: 92px; bottom: 0; left: var(--hero-reveal); z-index: 2; width: 1px; pointer-events: none; background: linear-gradient(transparent 4%, rgba(255,255,255,.7) 22%, rgba(255,255,255,.7) 78%, transparent 96%); box-shadow: 0 0 24px rgba(255,255,255,.35); will-change: left; }
-.hero-reveal-line span { position: absolute; left: 50%; top: 50%; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.72); border-radius: 50%; background: rgba(4, 24, 40, .58); transform: translate(-50%, -50%); backdrop-filter: blur(6px); }
-.hero-reveal-line span::before, .hero-reveal-line span::after { content: ""; position: absolute; top: 50%; width: 6px; height: 6px; border-top: 1px solid #fff; border-left: 1px solid #fff; }
-.hero-reveal-line span::before { left: 9px; transform: translateY(-50%) rotate(-45deg); }
-.hero-reveal-line span::after { right: 9px; transform: translateY(-50%) rotate(135deg); }
 .hero::before {
   content: "";
   position: absolute;
@@ -127,8 +123,6 @@ button { font: inherit; }
 .hero-founded strong { color: var(--white); font-size: 15px; }
 .hero-founded span { color: rgba(255,255,255,.72); font-size: 13px; }
 .scroll-hint { position: absolute; left: 50%; bottom: 24px; z-index: 3; width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; color: var(--white); background: rgba(3,18,31,.18); backdrop-filter: blur(8px); }
-.hero-stage-label { position: absolute; right: 96px; bottom: 30px; z-index: 3; padding: 8px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 999px; color: rgba(255,255,255,.78); background: rgba(3,18,31,.38); font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; backdrop-filter: blur(8px); }
-.hero-stage-label b { margin: 0 5px; color: #fff; }
 
 .section { padding: 110px 0; }
 .section-light { background: var(--bg); }
@@ -339,8 +333,6 @@ footer { padding: 60px 0 28px; color: #b9c8d3; background: #081a27; }
   .hero h1 { max-width: 600px; font-size: clamp(38px, 10vw, 48px); }
   .hero-content > p { max-width: 520px; font-size: 16px; }
   .hero-actions { display: grid; max-width: 410px; }
-  .hero-reveal-line { top: 76px; }
-  .hero-stage-label { display: none; }
   .hero-founded { align-items: flex-start; flex-direction: column; gap: 2px; margin-top: 32px; }
   .section { padding: 80px 0; }
   .about-visual { min-height: 480px; }
@@ -374,8 +366,7 @@ footer { padding: 60px 0 28px; color: #b9c8d3; background: #081a27; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero { --hero-reveal: 100% !important; }
-  .hero-reveal-line { display: none; }
+  .hero { --hero-reveal: 112% !important; }
 }
 
 @media (hover: none) {

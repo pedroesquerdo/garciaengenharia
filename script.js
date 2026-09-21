@@ -12,37 +12,32 @@ updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
 
 if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  let pointerActive = false;
-  let framePending = false;
+  let currentReveal = 58;
+  let targetReveal = 58;
+  let animationFrame = 0;
 
-  const setReveal = value => hero.style.setProperty('--hero-reveal', `${Math.max(55, Math.min(100, value))}%`);
-  const updateRevealFromScroll = () => {
-    framePending = false;
-    if (pointerActive) return;
-    const distance = Math.max(1, hero.offsetHeight * .58);
-    setReveal(55 + Math.min(1, Math.max(0, window.scrollY / distance)) * 45);
+  const animateReveal = () => {
+    currentReveal += (targetReveal - currentReveal) * .14;
+    hero.style.setProperty('--hero-reveal', `${currentReveal}%`);
+    if (Math.abs(targetReveal - currentReveal) > .05) {
+      animationFrame = requestAnimationFrame(animateReveal);
+    } else {
+      currentReveal = targetReveal;
+      hero.style.setProperty('--hero-reveal', `${currentReveal}%`);
+      animationFrame = 0;
+    }
   };
-  const requestRevealUpdate = () => {
-    if (framePending) return;
-    framePending = true;
-    requestAnimationFrame(updateRevealFromScroll);
+
+  const updateRevealTarget = () => {
+    const distance = Math.max(1, hero.offsetHeight * .62);
+    const progress = Math.min(1, Math.max(0, window.scrollY / distance));
+    targetReveal = 58 + progress * 54;
+    if (!animationFrame) animationFrame = requestAnimationFrame(animateReveal);
   };
 
-  hero.addEventListener('pointermove', event => {
-    if (event.pointerType === 'touch') return;
-    pointerActive = true;
-    const bounds = hero.getBoundingClientRect();
-    setReveal(((event.clientX - bounds.left) / bounds.width) * 100);
-  }, { passive: true });
-
-  hero.addEventListener('pointerleave', () => {
-    pointerActive = false;
-    requestRevealUpdate();
-  });
-
-  window.addEventListener('scroll', requestRevealUpdate, { passive: true });
-  window.addEventListener('resize', requestRevealUpdate, { passive: true });
-  updateRevealFromScroll();
+  window.addEventListener('scroll', updateRevealTarget, { passive: true });
+  window.addEventListener('resize', updateRevealTarget, { passive: true });
+  updateRevealTarget();
 }
 
 if (year) year.textContent = new Date().getFullYear();
