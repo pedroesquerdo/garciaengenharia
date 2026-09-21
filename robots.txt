@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pedroesquerdo.github.io/garciaengenharia/sitemap.xml
+Sitemap: https://garciaconstrutora.com.br/sitemap.xml
